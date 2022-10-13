@@ -43,13 +43,13 @@ Nonlinear unsupervised extraction: LLE, t-SNE
 
 &nbsp;이 과정 자체에서 한번의 최적화가 필요하며, 위 식의 E(W)가 cost function으로 최소화 대상이다.  
 
-&nbsp;&nbsp;E(W): 가중치 행렬이 W일때, 이웃으로 표현한 데이터 x_𝑖와 x_𝑗 사이의 차이를 제곱한 것  
+* E(W): 가중치 행렬이 W일때, 이웃으로 표현한 데이터 x_𝑖와 x_𝑗 사이의 차이를 제곱한 것  
 
-&nbsp;&nbsp;x_𝑖: 중심이 되는 데이터 포인트  
+* x_𝑖: 중심이 되는 데이터 포인트  
 
-&nbsp;&nbsp;x_𝑗: x_𝑖의 이웃이 되는 데이터 포인트  
+* x_𝑗: x_𝑖의 이웃이 되는 데이터 포인트  
 
-&nbsp;&nbsp;𝑊_𝑖𝑗: x_𝑖와 x_𝑗사이의 가중치  
+* 𝑊_𝑖𝑗: x_𝑖와 x_𝑗사이의 가중치  
 
 &nbsp;두 가지의 제약식은 각각 이웃이 아닌 경우에는 가중치가 0이고, 이웃 점들의 가중합으로 중심을 복원하는 형태이기 때문에 한 중심 데이터 포인트에 대한 가중치의 합은 1인것을 의미한다.  
 
@@ -67,13 +67,13 @@ Nonlinear unsupervised extraction: LLE, t-SNE
 </p>
 
 
-&nbsp;&nbsp;Φ(W): 가중치 행렬이 W일때, 이웃으로 표현한 데이터 y_𝑖와 y_𝑗 사이의 차이를 제곱한 것  
+* Φ(W): 가중치 행렬이 W일때, 이웃으로 표현한 데이터 y_𝑖와 y_𝑗 사이의 차이를 제곱한 것  
 
-&nbsp;&nbsp;y_𝑖: 축소한 저차원에서 중심이 되는 데이터 포인트  
+* y_𝑖: 축소한 저차원에서 중심이 되는 데이터 포인트  
 
-&nbsp;&nbsp;y_𝑗: y_𝑖의 이웃이 되는 데이터 포인트  
+* y_𝑗: y_𝑖의 이웃이 되는 데이터 포인트  
 
-&nbsp;&nbsp;𝑊_𝑖𝑗: 원래의 차원에서 얻은 x_𝑖와 x_𝑗사이의 가중치  
+* 𝑊_𝑖𝑗: 원래의 차원에서 얻은 x_𝑖와 x_𝑗사이의 가중치  
 
 &nbsp;여기서 두 가지의 제약식은 그림에 나타난 것과 같이 Embedding 공간에서 각 변수의 평균을 0으로 만들고, 각 변수들을 직교하게 하는 것으로 새로운 좌표계를 만든 것이라고 이해할 수 있다.  
 
@@ -96,13 +96,13 @@ Nonlinear unsupervised extraction: LLE, t-SNE
 &nbsp;하나 주목할 점은 좌측의 그림에서 d+1개의 eigen vector를 선택한다는 점인데, 이는 가장 작은 eigen vector의 경우 모든성분에 대해서 unit vector이기 때문에 그를 bottom으로 깔아놓고 하나를 더 선택한다고 이해하면 된다.  
 
 
-## t-SNE
+## 2. t-SNE
 &nbsp;t-SNE는 Nonlinear embedding을 사용하는 unsupervised extraction 방법론으로 최근 고차원 데이터의 시각화에 가장 보편적으로 사용되는 방법론이다.  
 
 &nbsp;t-SNE는 Stochastic Neighbor Embedding(SNE)과 Symmetric SNE를 순서대로 거쳐 발전한 알고리즘이기 때문에 각각을 우선 살펴 보도록 하자.  
 
 
-### 2. SNE(Stochastic Neighbor Embedding)
+### 2.1. SNE(Stochastic Neighbor Embedding)
 &nbsp;핵심적인 아이디어는 Locally Linear Embedding(LLE)와 동일하게 "본래의 고차원에서의 이웃간 의 관계와 저 차원으로  Embedding된 후 이웃관의 관계가 보존되어야한다"는 것이나, Local 이웃 간의 거리가 확정적(deterministic)이  아닌  확률적(probabilistic)으로 정의가 된다.  
 
 &nbsp;즉 방법론의 이름 처럼 "Stochastic"하게 "Neighbor"를 활용해 축소된 저차원의 "Embedding"를 얻는다고 이해하면 좋을 것이다.  
@@ -114,6 +114,66 @@ Nonlinear unsupervised extraction: LLE, t-SNE
 &nbsp;&nbsp;LLE(좌측): 만약 중심의 데이터 포인트 P를 복원(표현)하기 위해 이웃하는 데이터 포인트 6개를 사용한다면 그림처럼 P와 가장 가까운 6개의 점이 바로 확정적으로 결정이 된다.  
 
 &nbsp;&nbsp;SNE(우측): 그러나 SNE의 경우에는 중심의 데이터 P를 표현하기 위해 이웃하는 점을 사용한다는 것은 동일하나, Local 이웃 간의 거리가 확률적(probabilistic)으로 정의되기 때문에 그림처럼 1에서 6의 가까운 점이 확정적으로 사용되는 것이 아니라, 그보다 멀리 있는 a~f 점도 함께 사용될 가능성이 존재하게 된다.  
+
+&nbsp;이때, 객체 i가 객체 j를 이웃으로 택할 확률은 다음과 같이 계산된다.  
+<p align="center">
+  <image src="https://user-images.githubusercontent.com/72682160/195583689-4f359f20-2e29-4041-93ea-daef1a9b97ae.png" height="250"/>  
+</p>
+&nbsp;위 식에서 분모의 경우는 후보가 되는 모든 객체들의 확률 합을 1로 만들어 주는 Normalization 역할을 수행하며 핵심적인 내용은 분자에 나타난다. x와 y는 각각 기존의 차원과 축소된 저차원에서 객체들의 representation이며, e에 음의 지수로 붙어있기 때문에 두 객체가 가까울 수록 전체 확률의 값이 증가하는 형태이다.  
+
+
+&nbsp;여기서 추가로 고려해야하는 점은 원래의 차원에서 데이터 객체를 표현할 때, 가우시안 분포를 가정하여 σ를 분모에 활용한 것을 볼 수 있다. 앞서 설명한 바와 같이 SNE의 경우에는 이웃으로 선택하는 기준이 확률적이므로 사용하는 데이터셋 마다 데이터의 밀도가 다르면 전혀 다른 수의 이웃을 할당하게 될 가능성이 있다. 즉, 적절하게 σ를 조절하여 이웃하는 객체의 수를 일정수준으로 유지할 필요가 존재한다.  
+
+
+<p align="center">
+  <image src="https://user-images.githubusercontent.com/72682160/195586071-99d8f134-a610-46ec-a031-91bff074d9ea.png" height="100"/>  
+</p>
+
+* 그림처럼 σ가 큰 경우 객체가 더 멀리 떨어져 있어도 이웃으로 선택될 확률이 커진다.
+
+&nbsp;다음의 식에서 알 수 있듯이 이웃 확률에 따라 데이터의 Perplexity, Entropy가 결정이되는데, 실제로 알고리즘을 사용할 때는 우선적으로 원하는 수준의 Entropy를 결정해 놓고 그에 맞는 σ를 설정하는 식으로 사용된다. 
+
+<p align="center">
+  <image src="https://user-images.githubusercontent.com/72682160/195586689-4f5f8bab-f009-409e-a4c6-fe92e69a995a.png" height="100"/>  
+</p>
+
+* 알려진 바에 따르면 SNE의 성능은  perplexity 5~50 사이에 강건
+
+&nbsp;다음으로는 이제 위의 정의한 확률을 사용하여 정의한 저차원의 y가 얼마나 잘 embedding 되었는가를 평가하는 Cost Function을 정의해야한다.  
+이는 방법론의 목적인 “본래의 고차원에서의 이웃간 의 관계와 저 차원으로  Embedding된 후 이웃관의 관계가 보존되어야 함”이 얼마나 잘 달성되었는지, 즉, 임베딩 전 후의 분포가 얼마나 동일한지를 통해 평가 될 수 있다.  
+
+&nbsp;때문에 **Kullback-Leibler divergence**를 사용하여 다음과 같이 최적화 과정을 설계한다.  
+
+<p align="center">
+  <image src="https://user-images.githubusercontent.com/72682160/195587686-c00d896b-2886-4c1e-91b8-4ab89c7d3113.png" height="250"/>  
+</p>
+
+&nbsp;조금더 설명을 덧붙이자면 Kullback-Leibler divergence loss를 현재 최적화의 대상 미지수 y에 대해 편미분하여 Gradient를 구하고 Gradient Update를 통해 cost function을 최소화하는 것이다.  
+
+### 2.2. Symmetric SNE
+&nbsp;다음으로 알아볼 방법은 기존의 SNE가 두 객체 사이에 이웃으로 선택할 확률이 다른 것을(P(i -> j) ≠ P(j -> i)) 동일하게 만든 Symmetric SNE이다.  
+
+&nbsp;식은 다음과 같이 두 객체 각각이 서로를 이웃으로 선택할 확률을 더하고 2n으로 나눠주는 방식으로 매우 직관적이며, 여기서 2n의 제약식은 어떤 객체로 부터 또 다른 객체를 선택할 확률의 하한을 정해준 것으로 이해하면 된다.  
+
+<p align="center">
+  <image src="https://user-images.githubusercontent.com/72682160/195588391-e35054da-29fe-42d7-a75f-5b3eb0eeb50f.png" height="100"/>  
+</p>
+
+&nbsp;최적화과정은 SNE와 거의 동일하게 다음과 같이 정리된다.
+<p align="center">
+  <image src="https://user-images.githubusercontent.com/72682160/195588638-d9dc5b09-23c8-4004-b144-aaef8841c681.png" height="100"/>  
+</p>
+
+&nbsp;기존의 SNE보다 더욱 간단하게 최적화가 수행되며 대칭성도 달성하였지만 Symmetric SNE에는 아주 가까운 거리의 객체에 비해 적당히(moderate) 떨어진 객체들이 선택될 확률이 급격하게 감소한다는 Crowding Problem이 존재한다.
+<p align="center">
+  <image src="https://user-images.githubusercontent.com/72682160/195589077-e3ed48cc-4caa-4c94-bf4e-124a5b32f8c8.png" height="100"/>  
+</p>
+
+&nbsp;이웃으로 선택될 확률을 나타내는 Gaussian 분포의 그림에서 초록색과 붉은색의 기울기를 보면 바로 알 수 있듯이, 이러한 Crowding Problem은 Gaussian 분포의 뾰족한 모양 때문에 발생한다.  
+
+### 2.3. t-SNE
+&nbsp;Symmetric SNE의 Crowding Problem을 해결하기 위해 Gaussian 분포를 눌러 조금더 납작하게 만든 t 분포를 사용해 SNE를 수행하는 방법론이 바로 오늘의 주제인 t-SNE이다.  
+
 
 ## Reference
 https://sustaining-starflower-aff.notion.site/2022-2-0e068bff3023401fa9fa13e96c0269d7  
