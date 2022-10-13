@@ -1,8 +1,15 @@
 - [Dimensionality Reduction](#dimensionality-reduction)
-  * [1. Locally Linear Embedding(LLE)](#locally-linear-embedding)
-  * [2. t-SNE](#t-sne)
-    + [SNE(Stochastic Neighbor Embedding)](#sne-stochastic-neighbor-embedding)
-  * [Reference](#Reference)
+  * [1. Locally Linear Embedding](#1-locally-linear-embedding)
+    + [Step 1. 각 데이터 포인트의 이웃을 할당한다.](#step-1--------------------)
+    + [Step 2. 할당된 이웃들을 활용하여 중심의 데이터를 표현하기 위한 최적의 가중치를 찾는다.](#step-2--------------------------------------------)
+    + [Step 3. 새로 얻은 가중치 행렬 𝑊_𝑖𝑗 를 활용하여 축소된 차원으로 데이터를 표현한다.](#step-3-----------------------------------------------)
+  * [2. t-SNE](#2-t-sne)
+    + [2.1. SNE(Stochastic Neighbor Embedding)](#21-sne-stochastic-neighbor-embedding-)
+    + [2.2. Symmetric SNE](#22-symmetric-sne)
+    + [2.3. t-SNE](#23-t-sne)
+  * [Reference](#reference)
+
+
 
 # Dimensionality Reduction
 &nbsp;이번 Tutorial에서는 데이터의 차원이 커질 수록 발생하는 Curse of dimensionality 문제를 해결하기 위한 Dimensionality Reduction 방법론들 중 대표적인 Nonlinear unsupervised extraction 방법론 LLE와 t-SNE에 대해 살펴보도록 하자.
@@ -156,17 +163,17 @@ Nonlinear unsupervised extraction: LLE, t-SNE
 &nbsp;식은 다음과 같이 두 객체 각각이 서로를 이웃으로 선택할 확률을 더하고 2n으로 나눠주는 방식으로 매우 직관적이며, 여기서 2n의 제약식은 어떤 객체로 부터 또 다른 객체를 선택할 확률의 하한을 정해준 것으로 이해하면 된다.  
 
 <p align="center">
-  <image src="https://user-images.githubusercontent.com/72682160/195588391-e35054da-29fe-42d7-a75f-5b3eb0eeb50f.png" height="100"/>  
+  <image src="https://user-images.githubusercontent.com/72682160/195588391-e35054da-29fe-42d7-a75f-5b3eb0eeb50f.png" height="200"/>  
 </p>
 
 &nbsp;최적화과정은 SNE와 거의 동일하게 다음과 같이 정리된다.
 <p align="center">
-  <image src="https://user-images.githubusercontent.com/72682160/195588638-d9dc5b09-23c8-4004-b144-aaef8841c681.png" height="100"/>  
+  <image src="https://user-images.githubusercontent.com/72682160/195588638-d9dc5b09-23c8-4004-b144-aaef8841c681.png" height="200"/>  
 </p>
 
 &nbsp;기존의 SNE보다 더욱 간단하게 최적화가 수행되며 대칭성도 달성하였지만 Symmetric SNE에는 아주 가까운 거리의 객체에 비해 적당히(moderate) 떨어진 객체들이 선택될 확률이 급격하게 감소한다는 Crowding Problem이 존재한다.
 <p align="center">
-  <image src="https://user-images.githubusercontent.com/72682160/195589077-e3ed48cc-4caa-4c94-bf4e-124a5b32f8c8.png" height="100"/>  
+  <image src="https://user-images.githubusercontent.com/72682160/195589077-e3ed48cc-4caa-4c94-bf4e-124a5b32f8c8.png" height="200"/>  
 </p>
 
 &nbsp;이웃으로 선택될 확률을 나타내는 Gaussian 분포의 그림에서 초록색과 붉은색의 기울기를 보면 바로 알 수 있듯이, 이러한 Crowding Problem은 Gaussian 분포의 뾰족한 모양 때문에 발생한다.  
