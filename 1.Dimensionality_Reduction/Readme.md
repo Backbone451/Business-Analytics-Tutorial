@@ -1,9 +1,21 @@
 # Dimensionality Reduction
+이번 Tutorial에서는 데이터의 차원이 커질 수록 발생하는 Curse of dimensionality 문제를 해결하기 위한 Dimensionality Reduction 방법론들 중 대표적인 Nonlinear unsupervised extraction 방법론 LLE와 t-SNE에 대해 살펴보도록 하자.
 
 ![image](https://user-images.githubusercontent.com/72682160/195506768-899e573f-ef46-4f99-8c34-686101c2cee1.png)
 
-supervised selection: GA  
-unsupervised extraction: t-SNE  
+unsupervised extraction: LLE, t-SNE  
+
+## Locally Linear Embedding(LLE)
+LLE의 기본적인 아이디어는 Local(지역적) 정보의 보존이 Global(전역적) 정보의 보존 보다 중요하다는 가정아래 각각의 데이터 포인트를 이웃하는 데이터 포인트 들과의 관계를 통해 표현하는 것으로 시작된다.
+![image](https://user-images.githubusercontent.com/72682160/195516365-971cf668-83bd-499c-a6a3-d635a1ad25c0.png)
+위 예시 그림을 보면 Representation을 얻고자하는 중심 데이터 포인트(붉은색)이 있고, 그 주변의 데이터 포인트(푸른색)을 확인할 수 있다.  
+만약 우측의 그림에서처럼 중심이 되는 점과 이웃하는 점들 사이의 관계를 잘 파악한다면 그들을 통해 중심의 점을 표현하는 것이 가능할 것이다.  
+
+![image](https://user-images.githubusercontent.com/72682160/195516903-82fd0f92-4e12-4636-b395-299c5ba2e87e.png)
+
+즉, 이러한 관계를 충분히 학습하여 기억하고 있다면 모든 점들이 함께 저차원으로 이동하더라도 점들 사이의 관계는 유지될 것 이므로 위 그림처럼 차원에서도 동일한 이웃 점들과 동일한 관계를 통해 중심의 점이 충분히 표현될 수 있다.
+
+
 
 ## t-SNE
 t-SNE는 Nonlinear embedding을 사용하는 unsupervised extraction 방법론으로 최근 고차원 데이터의 시각화에 가장 보편적으로 사용되는 방법론이다.  
