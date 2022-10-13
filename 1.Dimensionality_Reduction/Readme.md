@@ -58,6 +58,15 @@ unsupervised extraction: LLE, t-SNE
 
 &nbsp;여기서 두 가지의 제약식은 그림에 나타난 것과 같이 Embedding 공간에서 각 변수의 평균을 0으로 만들고, 각 변수들을 직교하게 하는 것으로 새로운 좌표계를 만든 것이라고 이해할 수 있다.  
 
+본 최적화 과정을 바로 수행하기 전에 우선적으로 다음 그림에 나타난 식의 형태를 보고 결과를 예측해 볼수가 있다.  
+<image src="https://user-images.githubusercontent.com/72682160/195550823-20ffb052-fde6-4ba7-b9cf-75a73e3d58cd.png" height="310"/>  
+
+좌측의 정리한 최적화 식을 보면 우측의 "PCA" 방법론의 식과 매우 비슷하다는 것을 알 수 있다.  
+
+식의 형태 자체는 동일하며 차이점은 PCA의 경우 Maximization 문제이고 LLE의 경우엔 minimization이라는 것이다.  
+
+즉, PCA에서 최적화의 결과로 행렬 S의 eigen value를 큰 순서로 나열하고 거기서 원하는 차원의 수 만큼의 eigen vector를 통해 축소된 Principal component(축)을 찾아낸 것과 같이, LLE에서도 이웃 가중치 행렬 M의 eigen value를 "작은" 순서로 나열하고 거기서 원하는 차원의 수 만큼의 eigen vector를 선택하는 것으로 차원 축소를 달성 할 수 있을 것이다.
+
 
 ## t-SNE
 &nbsp;t-SNE는 Nonlinear embedding을 사용하는 unsupervised extraction 방법론으로 최근 고차원 데이터의 시각화에 가장 보편적으로 사용되는 방법론이다.  
@@ -76,4 +85,5 @@ unsupervised extraction: LLE, t-SNE
 &nbsp;&nbsp;SNE(우측): 그러나 SNE의 경우에는 중심의 데이터 P를 표현하기 위해 이웃하는 점을 사용한다는 것은 동일하나, Local 이웃 간의 거리가 확률적(probabilistic)으로 정의되기 때문에 그림처럼 1에서 6의 가까운 점이 확정적으로 사용되는 것이 아니라, 그보다 멀리 있는 a~f 점도 함께 사용될 가능성이 존재하게 된다.  
 
 ## Reference
-https://sustaining-starflower-aff.notion.site/2022-2-0e068bff3023401fa9fa13e96c0269d7 (고려대학교 산업경영공학과 강필성 교수님 Business-Analytics 수업자료)
+https://sustaining-starflower-aff.notion.site/2022-2-0e068bff3023401fa9fa13e96c0269d7  
+(고려대학교 산업경영공학과 강필성 교수님 Business-Analytics 수업자료)
