@@ -1,6 +1,6 @@
 - [Dimensionality Reduction](#dimensionality-reduction)
-  * [Locally Linear Embedding(LLE)](#locally-linear-embedding)
-  * [t-SNE](#t-sne)
+  * [1. Locally Linear Embedding(LLE)](#locally-linear-embedding)
+  * [2. t-SNE](#t-sne)
     + [SNE(Stochastic Neighbor Embedding)](#sne-stochastic-neighbor-embedding)
   * [Reference](#Reference)
 
@@ -11,9 +11,10 @@
 </p>
 
 &nbsp;본 글에서는 다음의 두 방법론에 대한 이론적 내용을 간단히 소개하고, 각각의 notebook file을 통해 python code 실습을 수행한다.  
-unsupervised extraction: LLE, t-SNE  
 
-## Locally Linear Embedding
+Nonlinear unsupervised extraction: LLE, t-SNE  
+
+## 1. Locally Linear Embedding
 &nbsp;LLE의 기본적인 아이디어는 Local(지역적) 정보의 보존이 Global(전역적) 정보의 보존 보다 중요하다는 가정아래 각각의 데이터 포인트를 이웃하는 데이터 포인트 들과의 관계를 통해 표현하는 것으로 시작된다.
 <p align="center">
   <image src="https://user-images.githubusercontent.com/72682160/195516365-971cf668-83bd-499c-a6a3-d635a1ad25c0.png" height="300"/>   
@@ -101,7 +102,7 @@ unsupervised extraction: LLE, t-SNE
 &nbsp;t-SNE는 Stochastic Neighbor Embedding(SNE)과 Symmetric SNE를 순서대로 거쳐 발전한 알고리즘이기 때문에 각각을 우선 살펴 보도록 하자.  
 
 
-### SNE(Stochastic Neighbor Embedding)
+### 2. SNE(Stochastic Neighbor Embedding)
 &nbsp;핵심적인 아이디어는 Locally Linear Embedding(LLE)와 동일하게 "본래의 고차원에서의 이웃간 의 관계와 저 차원으로  Embedding된 후 이웃관의 관계가 보존되어야한다"는 것이나, Local 이웃 간의 거리가 확정적(deterministic)이  아닌  확률적(probabilistic)으로 정의가 된다.  
 
 &nbsp;즉 방법론의 이름 처럼 "Stochastic"하게 "Neighbor"를 활용해 축소된 저차원의 "Embedding"를 얻는다고 이해하면 좋을 것이다.  
