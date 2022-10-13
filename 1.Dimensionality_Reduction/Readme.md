@@ -172,7 +172,18 @@ Nonlinear unsupervised extraction: LLE, t-SNE
 &nbsp;이웃으로 선택될 확률을 나타내는 Gaussian 분포의 그림에서 초록색과 붉은색의 기울기를 보면 바로 알 수 있듯이, 이러한 Crowding Problem은 Gaussian 분포의 뾰족한 모양 때문에 발생한다.  
 
 ### 2.3. t-SNE
-&nbsp;Symmetric SNE의 Crowding Problem을 해결하기 위해 Gaussian 분포를 눌러 조금더 납작하게 만든 t 분포를 사용해 SNE를 수행하는 방법론이 바로 오늘의 주제인 t-SNE이다.  
+&nbsp;Symmetric SNE의 Crowding Problem을 해결하기 위해 Gaussian 분포를 눌러 조금더 납작하게 만든 t 분포(df=1)를 사용해 SNE를 수행하는 방법론이 바로 오늘의 주제인 t-SNE이다.  
+
+&nbsp;t-SNE에서는 원래의 고차원에서는 Gaussian, 축소한 저차원 공간에서는 Student’s t 분포를 사용한다.
+<p align="center">
+  <image src="https://user-images.githubusercontent.com/72682160/195590203-082bd8b8-301c-41ee-b1ec-640bdb0a4f37.png" height="200"/>  
+</p>
+
+&nbsp;최적화과정은 기존의 방법론들과 거의 동일하며 다음과 cost function의 gradient에 조금 추가되는 부분이 생긴다.
+<p align="center">
+  <image src="https://user-images.githubusercontent.com/72682160/195590249-b9cf2161-3b2d-4665-ad77-62c203c9860d.png" height="200"/>  
+</p>
+
 
 
 ## Reference
