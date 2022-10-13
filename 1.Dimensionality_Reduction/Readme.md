@@ -88,11 +88,11 @@ unsupervised extraction: LLE, t-SNE
 
 &nbsp;즉, PCA에서 최적화의 결과로 행렬 S의 eigen value를 큰 순서로 나열하고 거기서 원하는 차원의 수 만큼의 eigen vector를 통해 축소된 Principal component(축)을 찾아낸 것과 같이, LLE에서도 이웃 가중치 행렬 M의 eigen value를 "작은" 순서로 나열하고 거기서 원하는 차원의 수 만큼의 eigen vector를 선택하는 것으로 차원 축소를 달성 할 수 있을 것이다. (Rayleitz-Ritz theorem)
 
-마지막으로 전체적인 과정을 나타내면 다음과 같다.
+&nbsp;마지막으로 전체적인 과정을 나타내면 다음과 같다.
 <p align="center">
   <image src="https://user-images.githubusercontent.com/72682160/195557931-b7a6a23f-dc53-4b88-9c6a-82a6c3b9111a.png" height="300"/>  
 </p>
-하나 주목할 점은 좌측의 그림에서 d+1개의 eigen vector를 선택한다는 점인데, 이는 가장 작은 eigen vector의 경우 모든성분에 대해서 unit vector이기 때문에 그를 bottom으로 깔아놓고 하나를 더 선택한다고 이해하면 된다.  
+&nbsp;하나 주목할 점은 좌측의 그림에서 d+1개의 eigen vector를 선택한다는 점인데, 이는 가장 작은 eigen vector의 경우 모든성분에 대해서 unit vector이기 때문에 그를 bottom으로 깔아놓고 하나를 더 선택한다고 이해하면 된다.  
 
 
 ## t-SNE
