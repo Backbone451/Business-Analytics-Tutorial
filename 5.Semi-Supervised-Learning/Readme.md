@@ -10,5 +10,5 @@ https://www.youtube.com/watch?v=nSJP7bn2D1U
 https://youtu.be/NoPkSeKUER4  
 (DSBA Lab PYSR 2022, 고유경)  
 
-https://github.com/microsoft/Semi-supervised-learning
+https://github.com/microsoft/Semi-supervised-learning  
 마이크로소프트의 SSL github repository를 활용하여 실험을 수행하였음.  
